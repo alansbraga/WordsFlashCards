@@ -10,6 +10,7 @@ namespace WordsFlashCards.Domain
     public class Word
     {
         private List<Tag> _tags;
+        public int Id { get; set; }
         public string Text { get; set; }
         public string Description { get; set; }
         public IEnumerable<Tag> Tags
