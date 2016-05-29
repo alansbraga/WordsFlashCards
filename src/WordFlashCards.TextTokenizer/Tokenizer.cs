@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WordFlashCards.TextTokenizer
 {
-    public class Tokenizer
+    public class Tokenizer : ITokenizer
     {
         private List<Token> _tokens;
         private string _text;
@@ -80,7 +80,7 @@ namespace WordFlashCards.TextTokenizer
             _index = 0;
 
         }
-        public void ProcessText(string text)
+        private void ProcessText(string text)
         {
             string local = "";
 

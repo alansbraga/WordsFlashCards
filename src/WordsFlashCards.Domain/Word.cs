@@ -10,6 +10,8 @@ namespace WordsFlashCards.Domain
     public class Word
     {
         private List<Tag> _tags;
+        private List<Phrase> _phrases;
+
         public int Id { get; set; }
         public string Text { get; set; }
         public string Description { get; set; }
@@ -25,9 +27,27 @@ namespace WordsFlashCards.Domain
             }
         }
 
+        public IEnumerable<Phrase> Phrases
+        {
+            get
+            {
+                return _phrases;
+            } 
+            protected set
+            {
+                _phrases = new List<Phrase>(value);
+            }
+        }
+
+        public void AddPhrase(Phrase phrase)
+        {
+            _phrases.Add(phrase);
+        }
+
         public Word()
         {
             _tags = new List<Tag>();
+            _phrases = new List<Phrase>();            
         }
     }
 }
