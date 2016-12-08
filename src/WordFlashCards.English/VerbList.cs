@@ -22,7 +22,7 @@ namespace WordFlashCards.English
                 ProcessVerbEnding(result, text.Substring(0, text.Length - 2));
             else if (text.EndsWith("ing"))
                 ProcessVerbEnding(result, text.Substring(0, text.Length - 3));
-            else if (text.EndsWith("s") && (text != "has") && (text != "was"))
+            else if (text.EndsWith("s") && (text != "has") && (text != "was") && (text != "s"))
                 result.Add(new Verb(text.Substring(0, text.Length - 2), text));
             else
             {

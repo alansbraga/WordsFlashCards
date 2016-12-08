@@ -77,7 +77,7 @@ namespace WordFlashCards.English
         {
             foreach (var w in result)
             {
-                if (w.Text == newWord.Text)
+                if (w.Text.ToLower() == newWord.Text.ToLower())
                 {
                     foreach (var p in newWord.Phrases)
                     {
