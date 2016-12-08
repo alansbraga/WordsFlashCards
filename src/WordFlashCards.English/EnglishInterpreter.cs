@@ -23,40 +23,41 @@ namespace WordFlashCards.English
 
         public IEnumerable<Word> Interprete()
         {
-            var result = new List<Word>();
+            var result = new Dictionary<string,Word>();
             var currentPhrase = new Phrase();
             var t = _tokenizer.CurrentToken();
 
             while (t != null)
             {
-                if (currentPhrase.Text != "")
-                    currentPhrase.Text += " ";
-                currentPhrase.Text += t.Text;
+                
 
                 if (t.IsWord())
                 {
+                    if (currentPhrase.Text != "")
+                      currentPhrase.Text += " ";
+                    currentPhrase.Text += t.Text;
                     var w = new Word();
                     w.Text = t.Text;
                     w.AddPhrase(currentPhrase);
                     if (!TestPhrasalVerb(result, w))
                         AddToList(result, w);
 
-                    if ((w.Text.Length == 1) && (".;!".Contains(w.Text[0])))
-                    {
-                        var nextToken = _tokenizer.QueryToken(1, true);
-                        if (nextToken == null)
-                            currentPhrase = new Phrase();
-                    }
                 }
+
+                if ((t.Text.Length == 1) && (".;!?".Contains(t.Text[0])))
+                {
+                    currentPhrase = new Phrase();
+                }
+
 
                 t = _tokenizer.NextToken();
             }
 
 
-            return result;
+            return result.Values;
         }
 
-        private bool TestPhrasalVerb(List<Word> result, Word w)
+        private bool TestPhrasalVerb(Dictionary<string,Word> result, Word w)
         {
             foreach (var v in _verbs.FindConjugatedVerb(w.Text))
             {
@@ -73,20 +74,21 @@ namespace WordFlashCards.English
             return false;
         }
 
-        private bool AddToList(List<Word> result, Word newWord)
+        private bool AddToList(Dictionary<string,Word> result, Word newWord)
         {
-            foreach (var w in result)
+            var key = newWord.Text.ToLower();
+
+            if (result.ContainsKey(key))
             {
-                if (w.Text.ToLower() == newWord.Text.ToLower())
+                var w = result[key];
+                foreach (var p in newWord.Phrases)
                 {
-                    foreach (var p in newWord.Phrases)
-                    {
-                        w.AddPhrase(p);
-                    }
-                    return false;
+                    w.AddPhrase(p);
                 }
+                return false;
             }
-            result.Add(newWord);
+
+            result.Add(key, newWord);
             return true;
         }
 

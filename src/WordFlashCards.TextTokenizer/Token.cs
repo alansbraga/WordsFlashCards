@@ -8,7 +8,7 @@ namespace WordFlashCards.TextTokenizer
     public class Token : IEquatable<string>
     {
         public static string[] SPACES = new string[] { " ", "\n", "\r", "\t" };
-        public static char[] SEPARATORS = new char[] { ' ', '.', ',', ';', '[', ']', '{', '}', '<', '>', '\\', '|', '+', '-', '/', '*', '=', '\'', '"', ':', '(', ')', '!', '?', '\t', '\n', '\r' };
+        public static char[] SEPARATORS = new char[] { ' ', '.', ',', ';', '[', ']', '{', '}', '<', '>', '\\', '|', '+', '-', '/', '*', '=', '\'', '"', ':', '(', ')', '!', '?', '\t', '\n', '\r', '“', '‘', '’', '…', '”', '—', '©', '®', '™', '–' };
 
         public const string Anything = "anythingyouwant";
 
