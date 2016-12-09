@@ -49,5 +49,10 @@ namespace WordsFlashCards.Domain
             _tags = new List<Tag>();
             _phrases = new List<Phrase>();            
         }
+
+        public override string ToString()
+        {
+            return Text;
+        }
     }
 }

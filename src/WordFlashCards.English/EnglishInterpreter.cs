@@ -26,16 +26,19 @@ namespace WordFlashCards.English
             var result = new Dictionary<string,Word>();
             var currentPhrase = new Phrase();
             var t = _tokenizer.CurrentToken();
+            var wasSpace = false;
 
             while (t != null)
             {
-                
+
+                if ((t.IsSpace()) && (!wasSpace))
+                    currentPhrase.Text += " ";
+                if (!t.IsSpace())
+                    currentPhrase.Text += t.Text;
+                wasSpace = t.IsSpace();
 
                 if (t.IsWord())
                 {
-                    if (currentPhrase.Text != "")
-                      currentPhrase.Text += " ";
-                    currentPhrase.Text += t.Text;
                     var w = new Word();
                     w.Text = t.Text;
                     w.AddPhrase(currentPhrase);
@@ -57,7 +60,7 @@ namespace WordFlashCards.English
             return result.Values;
         }
 
-        private bool TestPhrasalVerb(Dictionary<string,Word> result, Word w)
+        private bool TestPhrasalVerb(IDictionary<string,Word> result, Word w)
         {
             foreach (var v in _verbs.FindConjugatedVerb(w.Text))
             {
@@ -74,7 +77,7 @@ namespace WordFlashCards.English
             return false;
         }
 
-        private bool AddToList(Dictionary<string,Word> result, Word newWord)
+        private bool AddToList(IDictionary<string,Word> result, Word newWord)
         {
             var key = newWord.Text.ToLower();
 
