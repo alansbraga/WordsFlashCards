@@ -58,5 +58,55 @@ namespace WordFlashCards.TextTokenizer.Test
             Assert.Equal(5, words.Count());
             Assert.Equal("Too many spaces will disapear!", phrase.Text);
         }
+
+        [Fact]
+        public void PhrasalVerbsPartsInDifferentPhrases()
+        {
+            var words = Text2Words("Phrase with a back word. Phrase with a down word.");
+            Assert.Equal(6, words.Count());
+            Assert.False(words.Any(w => w.Text == "back down"));
+        }
+
+        [Fact]
+        public void PhrasalVerbsPartsInDifferentPhrasesExclamationPoint()
+        {
+            var words = Text2Words("Phrase with a back word! Phrase with a down word.");
+            Assert.Equal(6, words.Count());
+            Assert.False(words.Any(w => w.Text == "back down"));
+        }
+
+        [Fact]
+        public void ComplexPhrasalVerbsPartsInDifferentPhrases()
+        {
+            var words = Text2Words("Phrase with a bring word. Phrase with a on word.");
+            Assert.Equal(6, words.Count());
+            Assert.False(words.Any(w => w.Text == "bring on"));
+        }
+
+        [Fact]
+        public void ComplexPhrasalVerbsPartsInDifferentPhrasesExclamationPoint()
+        {
+            var words = Text2Words("Phrase with a bring word! Phrase with a on word.");
+            Assert.Equal(6, words.Count());
+            Assert.False(words.Any(w => w.Text == "bring on"));
+        }
+
+        [Fact]
+        public void ComplexPhrasalVerbsThreeWords()
+        {
+            var words = Text2Words("Let's bring this great thing on.");
+            Assert.Equal(6, words.Count());
+            Assert.True(words.Any(w => w.Text == "bring on"));
+        }
+
+        [Fact]
+        public void PhrasalVerbsPhrases()
+        {
+            const string s = "Slowly he sat back down;";
+            var words = Text2Words(s);
+            Assert.Equal(4, words.Count());
+            var backdown = words.Single(w => w.Text == "back down");
+            Assert.Equal(s, backdown.Phrases.First().Text);
+        }
     }
 }

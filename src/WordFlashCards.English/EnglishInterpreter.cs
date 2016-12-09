@@ -10,6 +10,13 @@ namespace WordFlashCards.English
 {
     public class EnglishInterpreter : IInterpreter
     {
+        public static HashSet<string> PhraseEndings = new HashSet<string>()
+        {
+            ".",
+            ";",
+            "!",
+            "?"
+        };
         private ITokenizer _tokenizer;
         private VerbList _verbs;
         private PhrasalVerbList _phrasalVerbs;
@@ -37,7 +44,7 @@ namespace WordFlashCards.English
                     currentPhrase.Text += t.Text;
                 wasSpace = t.IsSpace();
 
-                if (t.IsWord())
+                if (t.IsWord() && !t.Ignore)
                 {
                     var w = new Word();
                     w.Text = t.Text;
@@ -47,7 +54,7 @@ namespace WordFlashCards.English
 
                 }
 
-                if ((t.Text.Length == 1) && (".;!?".Contains(t.Text[0])))
+                if ((t.Text.Length == 1) && (PhraseEndings.Contains(t.Text)))
                 {
                     currentPhrase = new Phrase();
                 }

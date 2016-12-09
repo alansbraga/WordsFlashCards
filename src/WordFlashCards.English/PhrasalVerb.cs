@@ -60,7 +60,7 @@ namespace WordFlashCards.English
             }
             foreach (var token in usedTokens)
             {
-                token.Text = "";
+                token.Ignore = true;
             }
 
             return true;
@@ -74,7 +74,7 @@ namespace WordFlashCards.English
             {
                 if (!result.IsWord())
                 {
-                    if (search && (result.Text == "."))
+                    if (search && (EnglishInterpreter.PhraseEndings.Contains(result.Text)))
                         result = null;
                     else
                     {
