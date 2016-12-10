@@ -14,5 +14,10 @@ namespace FlashCards.EF
         public DbSet<Collection> Collection { get; set; }
         public DbSet<FlashCardCollection> FlashCardCollection { get; set; }
         public DbSet<Sample> Sample { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("Filename=/tmp/Flashcards.db");
+        }
     }
 }
