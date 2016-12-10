@@ -2,11 +2,12 @@
   "version": "1.0.0-*",
 
   "dependencies": {
+    "ASB.Dominio": "1.0.1",
     "NETStandard.Library": "1.6.1"
   },
 
   "frameworks": {
-    "netstandard1.5": {
+    "netstandard1.6": {
       "imports": "dnxcore50"
     }
   }
