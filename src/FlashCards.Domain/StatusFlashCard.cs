@@ -4,6 +4,7 @@
     {
         New = 0,
         Ignored = 1,
-        Learned = 2
+        Learned = 2,
+		Studying = 3
     }
 }
