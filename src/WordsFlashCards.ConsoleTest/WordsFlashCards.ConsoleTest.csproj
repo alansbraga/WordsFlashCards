@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <DebugType>portable</DebugType>
+    <AssemblyName>WordsFlashCards.ConsoleTest</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>WordsFlashCards.ConsoleTest</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WordFlashCards.English\WordFlashCards.English.csproj" />
+    <ProjectReference Include="..\WordFlashCards.TextTokenizer\WordFlashCards.TextTokenizer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IO" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>

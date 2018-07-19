@@ -1,34 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{03BE2C90-F76E-4283-863C-B4D47A7700E6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{00CB6986-7817-465E-B8ED-013A3FCFBB63}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WordsFlashCards", "src\WordsFlashCards\WordsFlashCards.xproj", "{98815131-B7A9-4702-8531-5C0A3E9A017D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordsFlashCards", "src\WordsFlashCards\WordsFlashCards.csproj", "{98815131-B7A9-4702-8531-5C0A3E9A017D}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WordsFlashCards.Domain", "src\WordsFlashCards.Domain\WordsFlashCards.Domain.xproj", "{AC411472-FDDE-4396-B92D-C6394C0991D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordsFlashCards.Domain", "src\WordsFlashCards.Domain\WordsFlashCards.Domain.csproj", "{AC411472-FDDE-4396-B92D-C6394C0991D6}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WordFlashCards.TextTokenizer", "src\WordFlashCards.TextTokenizer\WordFlashCards.TextTokenizer.xproj", "{93F1111D-F5A5-451C-838D-C5D8ED30B2E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordFlashCards.TextTokenizer", "src\WordFlashCards.TextTokenizer\WordFlashCards.TextTokenizer.csproj", "{93F1111D-F5A5-451C-838D-C5D8ED30B2E1}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WordFlashCards.TextTokenizer.Test", "src\WordFlashCards.TextTokenizer.Test\WordFlashCards.TextTokenizer.Test.xproj", "{D6EF4C5B-E0F4-4DA2-920A-165E7C37B418}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordFlashCards.TextTokenizer.Test", "src\WordFlashCards.TextTokenizer.Test\WordFlashCards.TextTokenizer.Test.csproj", "{D6EF4C5B-E0F4-4DA2-920A-165E7C37B418}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WordFlashCards.English", "src\WordFlashCards.English\WordFlashCards.English.xproj", "{2B64C603-6956-418E-8D73-F3D0989F82C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordFlashCards.English", "src\WordFlashCards.English\WordFlashCards.English.csproj", "{2B64C603-6956-418E-8D73-F3D0989F82C4}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WordFlashCards.English.Test", "src\WordFlashCards.English.Test\WordFlashCards.English.Test.xproj", "{0193FB5C-E81A-4354-8C99-15F1539AB4C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordFlashCards.English.Test", "src\WordFlashCards.English.Test\WordFlashCards.English.Test.csproj", "{0193FB5C-E81A-4354-8C99-15F1539AB4C4}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WordsFlashCards.ConsoleTest", "src\WordsFlashCards.ConsoleTest\WordsFlashCards.ConsoleTest.xproj", "{F3AD3AB8-1F00-4125-A444-FF40A73D473F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordsFlashCards.ConsoleTest", "src\WordsFlashCards.ConsoleTest\WordsFlashCards.ConsoleTest.csproj", "{F3AD3AB8-1F00-4125-A444-FF40A73D473F}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FlashCards.Domain", "src\FlashCards.Domain\FlashCards.Domain.xproj", "{F282D849-07DE-4F11-B7B5-D758C776531E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashCards.Domain", "src\FlashCards.Domain\FlashCards.Domain.csproj", "{F282D849-07DE-4F11-B7B5-D758C776531E}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FlashCards.EF", "src\FlashCards.EF\FlashCards.EF.xproj", "{A2AAECCC-4537-471C-8EC9-0351D7A5B2EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashCards.EF", "src\FlashCards.EF\FlashCards.EF.csproj", "{A2AAECCC-4537-471C-8EC9-0351D7A5B2EA}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FlashCards.WordFlashCards", "src\FlashCards.WordFlashCards\FlashCards.WordFlashCards.xproj", "{E01D7C5D-FB88-4FD6-B9C5-F4348AF554C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashCards.WordFlashCards", "src\FlashCards.WordFlashCards\FlashCards.WordFlashCards.csproj", "{E01D7C5D-FB88-4FD6-B9C5-F4348AF554C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,5 +88,8 @@ Global
 		{F282D849-07DE-4F11-B7B5-D758C776531E} = {03BE2C90-F76E-4283-863C-B4D47A7700E6}
 		{A2AAECCC-4537-471C-8EC9-0351D7A5B2EA} = {03BE2C90-F76E-4283-863C-B4D47A7700E6}
 		{E01D7C5D-FB88-4FD6-B9C5-F4348AF554C5} = {03BE2C90-F76E-4283-863C-B4D47A7700E6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B109225C-606B-4F4C-8789-A83A74912BD6}
 	EndGlobalSection
 EndGlobal

@@ -64,7 +64,7 @@ namespace WordFlashCards.TextTokenizer.Test
         {
             var words = Text2Words("Phrase with a back word. Phrase with a down word.");
             Assert.Equal(6, words.Count());
-            Assert.False(words.Any(w => w.Text == "back down"));
+            Assert.DoesNotContain(words, w => w.Text == "back down");
         }
 
         [Fact]
@@ -72,7 +72,7 @@ namespace WordFlashCards.TextTokenizer.Test
         {
             var words = Text2Words("Phrase with a back word! Phrase with a down word.");
             Assert.Equal(6, words.Count());
-            Assert.False(words.Any(w => w.Text == "back down"));
+            Assert.DoesNotContain(words, w => w.Text == "back down");
         }
 
         [Fact]
@@ -80,7 +80,7 @@ namespace WordFlashCards.TextTokenizer.Test
         {
             var words = Text2Words("Phrase with a bring word. Phrase with a on word.");
             Assert.Equal(6, words.Count());
-            Assert.False(words.Any(w => w.Text == "bring on"));
+            Assert.DoesNotContain(words, w => w.Text == "bring on");
         }
 
         [Fact]
@@ -88,7 +88,7 @@ namespace WordFlashCards.TextTokenizer.Test
         {
             var words = Text2Words("Phrase with a bring word! Phrase with a on word.");
             Assert.Equal(6, words.Count());
-            Assert.False(words.Any(w => w.Text == "bring on"));
+            Assert.DoesNotContain(words, w => w.Text == "bring on");
         }
 
         [Fact]
@@ -96,7 +96,7 @@ namespace WordFlashCards.TextTokenizer.Test
         {
             var words = Text2Words("Let's bring this great thing on.");
             Assert.Equal(6, words.Count());
-            Assert.True(words.Any(w => w.Text == "bring on"));
+            Assert.Contains(words, w => w.Text == "bring on");
         }
 
         [Fact]

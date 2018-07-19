@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>FlashCards.WordFlashCards</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>FlashCards.WordFlashCards</PackageId>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FlashCards.Domain\FlashCards.Domain.csproj" />
+    <ProjectReference Include="..\FlashCards.EF\FlashCards.EF.csproj" />
+    <ProjectReference Include="..\WordFlashCards.TextTokenizer\WordFlashCards.TextTokenizer.csproj" />
+    <ProjectReference Include="..\WordFlashCards.English\WordFlashCards.English.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ASB.DI" Version="1.0.3" />
+  </ItemGroup>
+
+</Project>
