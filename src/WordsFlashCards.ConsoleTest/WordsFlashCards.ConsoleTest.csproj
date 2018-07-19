@@ -17,4 +17,13 @@
     <PackageReference Include="System.IO" Version="4.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="eyech1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="eyecompleto.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
