@@ -22,8 +22,18 @@ namespace FlashCards.WordFlashCards
             container.Registrar<ICollectionFlashCardService, CollectionFlashCardService>();
             container.FinalizarRegistros();
 
-            var importer = container.GetService<TextFileToFlashCards>();
-            importer.ProcessFolder(@"C:\tmp\TEXTOS\");
+            try
+            {
+                var importer = container.GetService<TextFileToFlashCards>();
+                importer.ProcessFolder(@"D:\tmp\LivrosEmTexto");
+                Console.WriteLine("Acabou");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro: {ex.Message}");
+                
+            }
+            _ = Console.ReadLine();
         }
     }
 }

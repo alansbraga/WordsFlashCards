@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{03BE2C90-F76E-4283-863C-B4D47A7700E6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{00CB6986-7817-465E-B8ED-013A3FCFBB63}"
+	ProjectSection(SolutionItems) = preProject
+		Consultas.txt = Consultas.txt
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordsFlashCards.Domain", "src\WordsFlashCards.Domain\WordsFlashCards.Domain.csproj", "{AC411472-FDDE-4396-B92D-C6394C0991D6}"
 EndProject

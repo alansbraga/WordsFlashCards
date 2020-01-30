@@ -1,0 +1,39 @@
+// Palavras com maior número de ocorrências
+
+SELECT f.Question,  count(fc.Id) contador, sum(fc.Occurrences) ocorr
+  FROM FlashCardCollection fc
+    join FlashCard f on fc.FlashCardId = f. Id
+  where f.Status = 0
+group by f.Question
+order by sum(fc.Occurrences) desc
+limit 100
+
+
+// Mudando as primeiras X palavras para aprendidas.
+
+update Flashcard set Status = 2
+where Question in (
+SELECT f.Question--,  count(fc.Id) contador, sum(fc.Occurrences) ocorr
+  FROM FlashCardCollection fc
+    join FlashCard f on fc.FlashCardId = f. Id
+  where f.Status = 0
+group by f.Question
+order by sum(fc.Occurrences) desc
+limit 25);
+
+
+// Mostrando o livro que possui menos palavras desconhecidas
+
+SELECT c.Name, 
+       sum(case when f.Status = 0 then 1
+            else 0
+       end) Novas,
+       sum(case when f.Status = 2 then 1
+            else 0
+       end) Aprendidas
+       
+  from Collection c
+    join FlashCardCollection fc on c.Id = fc.CollectionId
+    join FlashCard f on fc.FlashCardId = f.Id
+  group by c.Name
+  order by Novas    

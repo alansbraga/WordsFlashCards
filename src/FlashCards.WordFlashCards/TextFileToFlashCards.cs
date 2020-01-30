@@ -11,6 +11,7 @@ using WordsFlashCards.Domain.interfaces;
 using WordsFlashCards.Domain;
 using FlashCards.Domain.Services;
 using ASB.Dominio.Interfaces;
+using System.Diagnostics;
 
 namespace FlashCards.WordFlashCards
 {
@@ -27,14 +28,35 @@ namespace FlashCards.WordFlashCards
 
         internal void ProcessFolder(string folder)
         {
-            foreach (var file in Directory.GetFiles(folder, "*.txt"))
+            var arquivos = Directory.GetFiles(folder, "*.txt", SearchOption.AllDirectories);
+            var total = arquivos.Length;
+            var atual = 0;
+            var sw = new Stopwatch();
+            long ticksMedio = 0;
+            var parar = false;
+
+            Console.CancelKeyPress += (object sender, ConsoleCancelEventArgs e) =>
             {
+                parar = true;
+                e.Cancel = true;
+            };
+
+            foreach (var file in arquivos)
+            {
+                atual++;
+                if (file.ToLower().Contains(" (1).txt"))
+                {
+                    File.Delete(file);
+                    continue;
+                }
+
                 var fileName = Path.GetFileName(file);
-                Console.WriteLine($"{DateTime.Now}: {fileName}");
+                Console.WriteLine($"{DateTime.Now}: {atual:0000}/{total} - {fileName}");
 
                 if (_service.CollectionExists(fileName))
                     continue;
 
+                sw.Restart();
                 ITokenizer tokenizer = new Tokenizer(File.ReadAllText(file));
                 IInterpreter interpreter = new EnglishInterpreter(tokenizer);
                 var words = interpreter.Interprete();
@@ -43,11 +65,32 @@ namespace FlashCards.WordFlashCards
                     Description = fileName,
                     Name = fileName
                 };
+                Console.WriteLine($"Palavras encontradas {words.Count()}");
                 CreateFlashCards(collection, words);
                 _service.AddCollection(collection);
-                _unityOfWork.Commit();
+                _unityOfWork.Commit();                
+
+                sw.Stop();
+                if (ticksMedio == 0)
+                    ticksMedio += sw.ElapsedTicks;
+                ticksMedio += sw.ElapsedTicks;
+                ticksMedio /= 2;
+                var timesPan = new TimeSpan(ticksMedio);
+                var tempoEstimado = new TimeSpan(ticksMedio * (total - atual));
+                var horaFinal = DateTime.Now.Add(tempoEstimado);
+                Console.WriteLine("-----------------------------------");
+                Console.WriteLine($"Tempo Médio: {timesPan} |||| Tempo Estimado: {tempoEstimado} |||| Tempo Finalizar: {horaFinal}");
+                Console.WriteLine("-----------------------------------");
+
+                if (parar)
+                {
+                    Console.WriteLine("Parada requisitada");
+                    return;
+                }
+                    
             }
         }
+
 
         private void CreateFlashCards(Collection collection, IEnumerable<Word> words)
         {

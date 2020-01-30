@@ -17,7 +17,7 @@ namespace FlashCards.EF
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Filename=/tmp/Flashcards.db");
+            optionsBuilder.UseSqlite("Filename=d:/tmp/Flashcards.db");
         }
     }
 }
