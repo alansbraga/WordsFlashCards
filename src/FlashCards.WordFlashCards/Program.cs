@@ -25,7 +25,7 @@ namespace FlashCards.WordFlashCards
             try
             {
                 var importer = container.GetService<TextFileToFlashCards>();
-                importer.ProcessFolder(@"D:\tmp\LivrosEmTexto");
+                importer.ProcessFolder(@"C:\tmp\LivrosEmTexto");
                 Console.WriteLine("Acabou");
             }
             catch (Exception ex)

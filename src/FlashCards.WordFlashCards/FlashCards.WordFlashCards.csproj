@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>FlashCards.WordFlashCards</AssemblyName>
+	  <TargetFramework>net6.0</TargetFramework>
+	  <AssemblyName>FlashCards.WordFlashCards</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>FlashCards.WordFlashCards</PackageId>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ASB.DI" Version="1.0.3" />
+    <PackageReference Include="ASB.DI" Version="1.1.1" />
   </ItemGroup>
 
 </Project>

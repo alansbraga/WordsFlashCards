@@ -12,6 +12,7 @@ using WordsFlashCards.Domain;
 using FlashCards.Domain.Services;
 using ASB.Dominio.Interfaces;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace FlashCards.WordFlashCards
 {
@@ -28,6 +29,8 @@ namespace FlashCards.WordFlashCards
 
         internal void ProcessFolder(string folder)
         {
+
+            ApagarRepetidos(folder);
             var arquivos = Directory.GetFiles(folder, "*.txt", SearchOption.AllDirectories);
             var total = arquivos.Length;
             var atual = 0;
@@ -91,6 +94,22 @@ namespace FlashCards.WordFlashCards
             }
         }
 
+        private void ApagarRepetidos(string folder)
+        {
+            var arquivos = Directory.GetFiles(folder, "*.txt", SearchOption.AllDirectories);
+
+            var regEx = new Regex(" \\([0-9]+\\)\\.txt");
+
+            foreach (var file in arquivos)
+            {
+                if (regEx.IsMatch(file.ToLower()))
+                {
+                    Console.WriteLine($"Apagado: {file}");
+                    File.Delete(file);
+                }
+                    
+            }
+        }
 
         private void CreateFlashCards(Collection collection, IEnumerable<Word> words)
         {
